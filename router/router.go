@@ -48,9 +48,10 @@ func InitRouter() *gin.Engine {
 		}
 
 		data.CardNumber = (strings.ReplaceAll(data.CardNumber, " ", ""))
+		data.CardNumber = (strings.ReplaceAll(data.CardNumber, "-", ""))
 
 		if len(data.CardNumber) != 16 {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid card number"})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid card number!"})
 			return
 		}
 
